@@ -6,8 +6,8 @@ jest.mock('@/components/product-card', () => {
   return {
     __esModule: true,
     default: ({ product }) => <div data-testid={`product-card-${product.id}`}>{product.name}</div>,
-  }
-})
+  };
+});
 
 describe('ProductGrid', () => {
   const mockProducts = [
@@ -17,8 +17,8 @@ describe('ProductGrid', () => {
   ];
 
   it('renders the correct number of product cards', () => {
-    render(<ProductGrid products={mockProducts} gridLayout="grid-4" />);
-    
+    render(<ProductGrid products={mockProducts} gridLayout="grid-5" />);
+
     expect(screen.getByTestId('product-card-1')).toBeInTheDocument();
     expect(screen.getByTestId('product-card-2')).toBeInTheDocument();
     expect(screen.getByTestId('product-card-3')).toBeInTheDocument();
@@ -26,8 +26,8 @@ describe('ProductGrid', () => {
   });
 
   it('renders empty grid when no products are provided', () => {
-    render(<ProductGrid products={[]} gridLayout="grid-4" />);
-    
+    render(<ProductGrid products={[]} gridLayout="grid-5" />);
+
     expect(screen.queryByTestId(/product-card-/)).not.toBeInTheDocument();
   });
-})
+});
