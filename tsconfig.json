@@ -21,6 +21,14 @@
       "node_modules/@types",
       "src/@types"
     ],
+    "paths": {
+      "@/*": ["./*"]
+    },
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
     "baseUrl": "./src",
     "incremental": true
   },
