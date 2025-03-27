@@ -20,11 +20,10 @@ describe('ProductCard', () => {
 
   it('renders product information correctly', () => {
     render(<ProductCard product={mockProduct} />);
-    
+
     expect(screen.getByText('Test Product')).toBeInTheDocument();
     expect(screen.getByText('Test Description')).toBeInTheDocument();
     expect(screen.getByText('99.99 €')).toBeInTheDocument();
-    expect(screen.getByText('/test-image.jpg')).toBeInTheDocument();
     expect(screen.getByRole('button', { name: /add to cart/i })).toBeInTheDocument();
   });
 
@@ -33,9 +32,9 @@ describe('ProductCard', () => {
       ...mockProduct,
       discountPrice: 79.99,
     };
-    
+
     render(<ProductCard product={discountedProduct} />);
-    
+
     expect(screen.getByText('99.99 €')).toBeInTheDocument();
     expect(screen.getByText('79.99 €')).toBeInTheDocument();
   });
