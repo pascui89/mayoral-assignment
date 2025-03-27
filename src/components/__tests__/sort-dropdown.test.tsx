@@ -3,7 +3,6 @@
 import { render, screen, fireEvent } from "@testing-library/react";
 import SortDropdown from "@/components/sort-dropdown";
 
-// Simplificamos el mock para evitar problemas con displayName
 jest.mock("@/components/ui/select", () => ({
   Select: ({ children, value, onValueChange }) => (
     <div data-testid="select-root" onClick={() => onValueChange && onValueChange("price-asc")}>
@@ -19,7 +18,7 @@ jest.mock("@/components/ui/select", () => ({
 
 describe("SortDropdown", () => {
   it("renders with the correct sort option selected", () => {
-    render(<SortDropdown sortOption="featured" onSort={() => {}} />);
+    render(<SortDropdown sortOption="featured" onSort={jest.fn()} />);
 
     expect(screen.getByText("Current value: featured")).toBeInTheDocument();
   })
